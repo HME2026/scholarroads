@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ScholarRoads — Compare the Best Private Student Loans (College Ave vs Sallie Mae)</title>
-<meta name="description" content="A simple, honest comparison of two top private student loans — College Ave and Sallie Mae — so you can pick with confidence and apply in minutes." />
+<title>Everything You Need to Know About Student Loans — ScholarRoads</title>
+<meta name="description" content="Honest, easy-to-follow guides that walk you through student loans step by step, so you can borrow with confidence." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ScholarRoads" />
+<meta property="og:title" content="Everything You Need to Know About Student Loans" />
+<meta property="og:description" content="Honest, easy-to-follow guides that walk you through student loans step by step, so you can borrow with confidence." />
+<meta property="og:url" content="https://www.scholarroads.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Everything You Need to Know About Student Loans" />
+<meta name="twitter:description" content="Honest, easy-to-follow guides that walk you through student loans step by step, so you can borrow with confidence." />
 <!--  ============================================================
       SWAP THESE TWO PLACEHOLDER LINKS BEFORE GOING LIVE
       (search for COLLEGEAVE_URL and SALLIEMAE_URL in the script at the bottom)
@@ -350,12 +358,14 @@
 
 <script>
   /* ===== SWAP THESE TWO PLACEHOLDER LINKS BEFORE GOING LIVE ===== */
-  var COLLEGEAVE_URL = "#REPLACE_WITH_COLLEGE_AVE_AFFILIATE_LINK";
-  var SALLIEMAE_URL  = "#REPLACE_WITH_SALLIE_MAE_AFFILIATE_LINK";
+  var COLLEGEAVE_URL = "https://www.collegeave.com/";
+  var SALLIEMAE_URL  = "https://www.salliemae.com/";
   /* ============================================================== */
   document.querySelectorAll("a.cta").forEach(function(a){
     var url = a.getAttribute("data-lender") === "salliemae" ? SALLIEMAE_URL : COLLEGEAVE_URL;
     a.setAttribute("href", url);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "sponsored noopener noreferrer");
   });
 </script>
 </body>
