@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ScholarRoads — Compare the Best Private Student Loans (College Ave vs Sallie Mae)</title>
+<meta name="description" content="A simple, honest comparison of two top private student loans — College Ave and Sallie Mae — so you can pick with confidence and apply in minutes." />
+<!--  ============================================================
+      SWAP THESE TWO PLACEHOLDER LINKS BEFORE GOING LIVE
+      (search for COLLEGEAVE_URL and SALLIEMAE_URL in the script at the bottom)
+      ============================================================ -->
+<style>
+  :root{
+    --teal:#12a191; --teal-d:#0c8073; --teal-l:#57c6ba; --sky:#bfe9e2;
+    --cream:#fbf6ec; --cream-2:#f3ead6; --card:#ffffff;
+    --ink:#1b2f2b; --muted:#5c6d67; --coral:#ff8a5b; --gold:#e9b24a;
+    --line:#e8ddc7; --radius:20px; --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{color:var(--ink);background:var(--cream);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  /* soft welcoming background */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(38% 34% at 8% 6%, rgba(18,161,145,.16), transparent 62%),
+      radial-gradient(36% 34% at 94% 8%, rgba(255,138,91,.14), transparent 62%),
+      radial-gradient(40% 40% at 96% 70%, rgba(18,161,145,.12), transparent 62%),
+      radial-gradient(38% 36% at 4% 88%, rgba(233,178,74,.12), transparent 62%),
+      linear-gradient(180deg,#fbf6ec 0%, #f7f1e3 60%, #fbf6ec 100%)}
+  .wrap{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 22px}
+  a{color:var(--teal-d);text-decoration:none} a:hover{color:var(--teal)}
+
+  /* header */
+  .topbar{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.82);
+    backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,221,199,.7)}
+  .topbar .inner{max-width:var(--max);margin:0 auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:0;font-weight:800;font-size:23px;letter-spacing:.2px;color:var(--ink)}
+  .logo .mk{width:38px;height:38px;border-radius:11px;margin-right:11px;background:linear-gradient(150deg,var(--teal),var(--teal-d));
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:0 8px 20px -8px rgba(12,128,115,.6)}
+  .logo .mk svg{width:22px;height:22px}
+  .logo span{color:var(--teal-d)}
+  .navcta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,var(--teal),var(--teal-d));
+    color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;box-shadow:0 10px 24px -10px rgba(12,128,115,.7)}
+  .navcta:hover{color:#fff;transform:translateY(-1px);transition:.15s}
+  .topnav{display:flex;align-items:center;gap:24px}
+  .topnav a{font-weight:700;font-size:15px;color:var(--ink)}
+  .topnav a:hover{color:var(--teal-d)}
+  @media(max-width:640px){.topnav a:not(.navcta){display:none}}
+
+  /* advertiser disclosure strip */
+  .addisc{background:var(--cream-2);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted);text-align:center;padding:8px 16px}
+  .addisc a{font-weight:700;text-decoration:underline}
+
+  section{position:relative;z-index:1}
+  .eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+    color:var(--teal-d);background:rgba(18,161,145,.12);padding:6px 13px;border-radius:999px;margin-bottom:16px}
+
+  /* hero */
+  .hero{text-align:center;padding:44px 0 30px;max-width:820px;margin:0 auto}
+  .hero h1{font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-.6px}
+  .hero h1 .hl{color:var(--teal-d)}
+  .mark{background:linear-gradient(120deg,rgba(18,161,145,.26),rgba(18,161,145,.20));background-repeat:no-repeat;background-size:100% 38%;background-position:0 84%;padding:0 3px;border-radius:2px}
+  .mark-gold{background:linear-gradient(120deg,rgba(233,178,74,.42),rgba(233,178,74,.34));background-repeat:no-repeat;background-size:100% 38%;background-position:0 84%;padding:0 3px;border-radius:2px}
+  .faqgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  @media(max-width:720px){.faqgrid{grid-template-columns:1fr}}
+  .hero p.sub{font-size:19px;color:var(--muted);margin:20px auto 0;max-width:640px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:17px;
+    padding:16px 30px;border-radius:999px;border:0;cursor:pointer;transition:.15s}
+  .btn-primary{background:linear-gradient(180deg,var(--teal),var(--teal-d));color:#fff;box-shadow:0 16px 34px -14px rgba(12,128,115,.75)}
+  .btn-primary:hover{color:#fff;transform:translateY(-2px)}
+  .btn-ghost{background:rgba(18,161,145,.09);color:var(--teal-d);border:1.5px solid rgba(18,161,145,.32)}
+  .btn-ghost:hover{background:rgba(18,161,145,.15);border-color:var(--teal)}
+  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--ink);
+    background:rgba(18,161,145,.07);border:1px solid rgba(18,161,145,.22);padding:9px 15px;border-radius:999px}
+  .chip i{color:var(--teal)}
+  .hero-guides{display:inline-block;margin-top:22px;font-weight:700;font-size:15px;color:var(--teal-d);
+    background:rgba(18,161,145,.09);border:1px solid rgba(18,161,145,.28);padding:11px 22px;border-radius:999px;text-decoration:none;transition:.15s}
+  .hero-guides:hover{background:rgba(18,161,145,.15);color:var(--teal-d);transform:translateY(-1px)}
+
+  /* "before you borrow" note */
+  .note{max-width:820px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-left:5px solid var(--teal);
+    border-radius:16px;padding:20px 24px;display:flex;gap:15px;align-items:flex-start}
+  .note .ic{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:rgba(18,161,145,.12);color:var(--teal-d);
+    display:flex;align-items:center;justify-content:center;font-size:20px}
+  .note b{color:var(--ink)}
+  .note p{color:var(--muted);font-size:15px}
+
+  /* section head */
+  .shead{text-align:center;max-width:680px;margin:76px auto 34px}
+  .shead h2{font-size:33px;font-weight:800;letter-spacing:-.4px}
+  .shead p{color:var(--muted);font-size:17px;margin-top:12px}
+
+  /* lender cards */
+  .picks{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.picks{grid-template-columns:1fr}}
+  .lender{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;
+    box-shadow:0 26px 50px -34px rgba(27,47,43,.5);display:flex;flex-direction:column;transition:transform .16s ease, box-shadow .16s ease}
+  .lender:hover{transform:translateY(-6px)}
+  .lender .rank{position:absolute;top:-13px;left:28px;background:linear-gradient(180deg,var(--teal),var(--teal-d));color:#fff;
+    font-size:12.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+  .lender.two .rank{background:linear-gradient(180deg,var(--gold),#cf9524)}
+  .lender.one{background:linear-gradient(180deg,#f1faf7,#ffffff);border-color:rgba(18,161,145,.30);box-shadow:0 30px 56px -30px rgba(12,128,115,.5)}
+  .lender.two{box-shadow:0 30px 56px -30px rgba(233,178,74,.55)}
+  .lender h3{font-size:26px;font-weight:800;margin-top:10px}
+  .lender .tagline{color:var(--teal-d);font-weight:700;font-size:14.5px;margin-top:4px}
+  .lender ul{list-style:none;margin:20px 0 0;display:flex;flex-direction:column;gap:11px}
+  .lender li{position:relative;padding-left:34px;font-size:15.5px;color:#33443f;line-height:1.5}
+  .lender li i{position:absolute;left:0;top:2px;width:23px;height:23px;border-radius:50%;background:rgba(18,161,145,.16);color:var(--teal-d);
+    display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-style:normal;font-weight:900}
+  .lender .foot{margin-top:auto;padding-top:22px}
+  .lender .apply{display:flex;width:100%;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:16px;
+    padding:15px;border-radius:14px;background:linear-gradient(180deg,var(--teal),var(--teal-d));color:#fff;box-shadow:0 14px 30px -14px rgba(12,128,115,.7)}
+  .lender.two .apply{background:linear-gradient(180deg,var(--gold),#cf9524)}
+  .lender .apply:hover{color:#fff;transform:translateY(-2px);transition:.15s}
+  .lender small.fine{display:block;text-align:center;color:var(--muted);font-size:12.5px;margin-top:11px}
+
+  /* at-a-glance table */
+  .glance{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .glance .row{display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid var(--line)}
+  .glance .row:first-child{border-top:0}
+  .glance .row>div{padding:14px 18px;font-size:14.5px}
+  .glance .row.head>div{background:var(--cream-2);font-weight:800;color:var(--ink)}
+  .glance .row>div:first-child{font-weight:700;color:var(--ink)}
+  .glance .row>div:nth-child(n+2){color:#3a4a45}
+  @media(max-width:620px){.glance .row>div{padding:11px 12px;font-size:13px}}
+
+  /* which is right */
+  .which{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+  @media(max-width:720px){.which{grid-template-columns:1fr}}
+  .which .box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+  .which .box h4{font-size:18px;font-weight:800;margin-bottom:6px}
+  .which .box p{color:var(--muted);font-size:15px}
+  .which .box .who{color:var(--teal-d);font-weight:800}
+
+  /* guide cards */
+  .gcards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+  @media(max-width:900px){.gcards{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.gcards{grid-template-columns:1fr}}
+  a.gcard{text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;
+    box-shadow:0 22px 44px -34px rgba(27,47,43,.4);transition:.15s}
+  a.gcard:hover{transform:translateY(-4px);border-color:var(--teal-l);box-shadow:0 28px 50px -28px rgba(12,128,115,.5)}
+  .gcard .tag{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--teal-d);margin-bottom:8px}
+  .gcard h4{font-size:17px;font-weight:800;color:var(--ink);line-height:1.25}
+  .gcard p{color:var(--muted);font-size:14px;margin-top:8px;flex:1}
+  .gcard .go{margin-top:14px;font-weight:800;color:var(--teal-d);font-size:14px}
+  .gcard.soon{opacity:.75}
+  .gcard.soon .go{color:var(--muted)}
+
+  /* faq */
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:12px}
+  details summary{cursor:pointer;font-weight:700;font-size:16.5px;padding:15px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";color:var(--teal-d);font-size:22px;font-weight:700}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);font-size:15.5px;padding:0 0 18px}
+
+  /* final cta */
+  .final{margin:80px auto 0;background:linear-gradient(160deg,var(--teal),var(--teal-d));border-radius:26px;
+    padding:48px 30px;text-align:center;color:#fff;max-width:var(--max);position:relative;overflow:hidden}
+  .final h2{font-size:30px;font-weight:800}
+  .final p{color:rgba(255,255,255,.92);font-size:17px;margin:14px auto 0;max-width:580px}
+  .final-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);padding:7px 15px;border-radius:999px;margin-bottom:16px}
+  .final .cta-row{margin-top:26px}
+  .final .btn-primary{background:#fff;color:var(--teal-d)}
+  .final .btn-primary:hover{color:var(--teal-d)}
+
+  /* footer */
+  footer{position:relative;z-index:1;margin-top:70px;border-top:1px solid var(--line);padding:34px 0 46px;text-align:center;color:var(--muted);font-size:13px}
+  footer .legal{display:flex;gap:16px 18px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+  footer .brandline{font-weight:800;color:var(--ink);margin-bottom:8px}
+  footer .brandline span{color:var(--teal-d)}
+  footer .disc{max-width:760px;margin:12px auto 0;font-size:12px;line-height:1.6}
+</style>
+</head>
+<body>
+  <header class="topbar"><div class="inner">
+    <a class="logo" href="index.html">
+      <span class="mk"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.5L12 4l9 4.5-9 4.5-9-4.5z" fill="#fff"/><path d="M7 11v4c0 1.1 2.24 2.5 5 2.5s5-1.4 5-2.5v-4" stroke="#fff" stroke-width="1.7" fill="none" stroke-linecap="round"/><path d="M21 8.5v5" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+      Scholar<span>Roads</span>
+    </a>
+    <nav class="topnav">
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a class="navcta" href="#picks">Top picks →</a>
+    </nav>
+  </div></header>
+
+  <div class="addisc">Advertiser disclosure: we may earn a commission if you apply through our links — at no extra cost to you. This can affect which products we feature and where. <a href="advertiser-disclosure.html">How we make money</a>.</div>
+
+  <!-- HERO -->
+  <section class="wrap">
+    <div class="hero">
+      <h1>Figure out how to actually <span class="hl">pay for college</span></h1>
+      <p class="sub">Unless you've got a fully funded college fund, you'll probably need a student loan — and picking the right lender matters almost as much as picking the school. My team and I <span class="mark">did the digging</span>, so here's an honest, plain-English breakdown of the two private lenders worth your time: <span class="mark"><strong>College Ave</strong></span> and <span class="mark-gold"><strong>Sallie Mae</strong></span>.</p>
+      <div class="chips">
+        <span class="chip"><i>✓</i> Free to use</span>
+        <span class="chip"><i>✓</i> No account, no spam</span>
+        <span class="chip"><i>✓</i> Updated for 2026</span>
+      </div>
+      <a class="hero-guides" href="blog.html">📚 New to student loans? <strong>Browse our guides</strong> — answers to all your questions →</a>
+    </div>
+
+    <div class="note">
+      <div class="ic">🎓</div>
+      <div><p><b>Smart move first:</b> file your FAFSA and apply for scholarships and federal aid before any private loan. Federal loans come with protections private loans don't — like income-driven repayment and forgiveness options. Once you've maxed those out, a private loan from a lender like the ones below can cover the gap.</p></div>
+    </div>
+  </section>
+
+  <!-- PICKS -->
+  <section class="wrap" id="picks">
+    <div class="shead">
+      <h2>Our top two <span class="mark">recommended</span> private student loans</h2>
+      <p>Both are well-established lenders for undergrads, grad students, and parents. Here's what each one is genuinely good at.</p>
+    </div>
+
+    <div class="picks">
+      <div class="lender one">
+        <span class="rank">★ Our #1 pick</span>
+        <h3>College Ave</h3>
+        <div class="tagline">See your real rate without touching your credit</div>
+        <ul>
+          <li><i>✓</i> Prequalify with a <strong>soft credit check</strong> — see your actual options with no hit to your score</li>
+          <li><i>✓</i> Fast: find out what you qualify for in about 3 minutes</li>
+          <li><i>✓</i> No application, origination, or prepayment fees</li>
+          <li><i>✓</i> Loans from $1,000 up to your full cost of attendance, plus refinancing</li>
+          <li><i>✓</i> Fixed or variable rates and 4 ways to repay — including paying while you study to save</li>
+          <li><i>✓</i> An online portal that shops multiple banks for you (not a bank itself)</li>
+        </ul>
+        <div class="foot">
+          <a class="apply cta" data-lender="collegeave" href="#" target="_blank" rel="sponsored noopener">Check your options at College Ave →</a>
+          <small class="fine">You'll leave ScholarRoads and go to College Ave to see current rates and apply.</small>
+        </div>
+      </div>
+
+      <div class="lender two">
+        <h3>Sallie Mae</h3>
+        <div class="tagline">One of the most established lenders</div>
+        <ul>
+          <li><i>✓</i> Been around since the 1970s — one of the most established student lenders</li>
+          <li><i>✓</i> Often lower starting rates than College Ave</li>
+          <li><i>✓</i> Loans for undergrad, grad, and career/trade — plus international &amp; part-time students</li>
+          <li><i>✓</i> Strong support, financial-literacy tools, and scholarships</li>
+          <li><i>✓</i> Deferred and interest-only payment options while you're in school</li>
+          <li><i>!</i> Honest heads-up: no prequalification — the application is a hard credit check, so check your eligibility first</li>
+        </ul>
+        <div class="foot">
+          <a class="apply cta" data-lender="salliemae" href="#" target="_blank" rel="sponsored noopener">Explore Sallie Mae loans →</a>
+          <small class="fine">You'll leave ScholarRoads and go to Sallie Mae to see current rates and apply.</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- at a glance -->
+    <div class="glance">
+      <div class="row head"><div>At a glance</div><div><span class="mark">College Ave</span></div><div><span class="mark-gold">Sallie Mae</span></div></div>
+      <div class="row"><div>Prequalify (soft credit check)</div><div>Yes — see rates, no credit-score hit</div><div>No — the application is a hard check</div></div>
+      <div class="row"><div>Speed to check</div><div>~3 minutes</div><div>Full application only</div></div>
+      <div class="row"><div>Ways to repay</div><div>4 options (incl. pay while studying)</div><div>3 options</div></div>
+      <div class="row"><div>Undergrad rate (lowest advertised APR)</div><div>Fixed from 2.84% · Var. from 3.89%</div><div>Fixed from 2.19% · Var. from 3.75%</div></div>
+      <div class="row"><div>Loan types</div><div>Undergrad, grad, career, parent, refi</div><div>Undergrad, grad, career/trade, int'l</div></div>
+      <div class="row"><div>Loan amount</div><div>$1,000 to full cost of attendance</div><div>$1,000 to full cost of attendance</div></div>
+      <div class="row"><div>Cosigner</div><div>Usually required for undergrads</div><div>Optional — can lower your rate</div></div>
+      <div class="row"><div>Grace period</div><div>6 mo undergrad · 9 mo grad</div><div>6 months</div></div>
+      <div class="row"><div>Application fees</div><div>None</div><div>None</div></div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:12.5px;margin-top:14px;max-width:820px;margin-left:auto;margin-right:auto">Lowest advertised APRs shown are for undergraduate loans as of August 2026, include autopay discounts, and require strong credit — your actual rate depends on your (or your cosigner's) credit and other factors, and rates change often. Always confirm current rates, terms, and eligibility on each lender's website before applying.</p>
+  </section>
+
+  <!-- WHICH IS RIGHT -->
+  <section class="wrap">
+    <div class="shead"><h2>Which one is <span class="mark">right</span> for you?</h2><p>Neither is "better" — they're good at <span class="mark">different things</span>.</p></div>
+    <div class="which">
+      <div class="box"><h4>Go with <span class="who">College Ave</span> if…</h4><p>You want to check your real rate <strong>without any hit to your credit</strong>, you want a fast application, and you want the most repayment flexibility (four ways to pay). Our overall #1 pick for most students.</p></div>
+      <div class="box"><h4>Go with <span class="who">Sallie Mae</span> if…</h4><p>You want a long-trusted name and you're chasing the <strong>lowest possible rate</strong> — their starting APRs currently run a touch lower — and you're confident enough in your (or a cosigner's) credit to apply directly.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW WE PICKED -->
+  <section class="wrap" id="how">
+    <div class="shead"><h2>How we <span class="mark">picked</span></h2><p><span class="mark">Real research</span> on the things that actually matter to students — not opinions.</p></div>
+    <div class="which">
+      <div class="box"><h4>What we compare</h4><p>Rates and fees, whether you can check your rate without a hard credit pull, repayment flexibility, cosigner options, grace periods, and loan types — the things that actually change what you pay and how easily you qualify.</p></div>
+      <div class="box"><h4>Checked against the lenders</h4><p>Our research team verifies every rate and detail directly against each lender's own current terms, and we refresh it as things change — so what you read here is accurate and up to date, not guesswork. See our full <a href="methodology.html">review process</a>.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap">
+    <div class="shead"><h2>Common <span class="mark">questions</span></h2></div>
+    <div class="faqgrid">
+      <details><summary>Should I use federal loans before a private one?</summary><p>Almost always, yes. Federal loans (via the FAFSA) come with protections private loans don't — income-driven repayment, forgiveness options, and flexible hardship programs. Use federal aid and scholarships first, then a private loan to cover any remaining gap.</p></details>
+      <details><summary>Can international students get these loans?</summary><p>Yes. Both College Ave and Sallie Mae offer options for international students — usually with a creditworthy U.S. cosigner, since most don't have a U.S. credit history. Federal loans, by contrast, aren't available to international students. See our <a href="blog.html">international students guide</a>.</p></details>
+      <details><summary>Do I need a cosigner?</summary><p>Often, yes. College Ave typically requires a creditworthy cosigner for undergraduate and international students. Sallie Mae doesn't strictly require one, but most students without established credit will need one to qualify — and either way, a cosigner with good credit can get you a lower rate.</p></details>
+      <details><summary>Will checking my options affect my credit?</summary><p>It depends. College Ave lets you <strong>prequalify with a soft credit check</strong> — see your real rates with no impact on your score; only the final application is a hard check. Sallie Mae has no prequalification, so their application is a hard credit check — which is why it's smart to confirm eligibility first.</p></details>
+      <details><summary>Fixed vs. variable rate — what's the difference?</summary><p>A fixed rate stays the same for the life of the loan, so payments are predictable. A variable rate can start lower but rise or fall with the market. Both lenders offer both; fixed is the safer choice if you want certainty.</p></details>
+      <details><summary>How much can I borrow?</summary><p>With both lenders, loans start at $1,000 and go up to your school's total certified cost of attendance — tuition plus expenses like housing, books, and fees. You can't borrow more than your school certifies.</p></details>
+      <details><summary>When do I start repaying?</summary><p>You usually get a grace period after leaving school before full payments begin (around 6 months, longer for some graduate programs). Paying even a little while you're in school — interest-only or a flat monthly amount — can save you a lot over the life of the loan.</p></details>
+      <details><summary>What credit score do I need?</summary><p>There's no single cutoff — lenders look at your (or your cosigner's) full credit profile and income. Stronger credit means a lower rate, and a creditworthy cosigner can help you qualify or improve your rate. College Ave's soft-check prequalification lets you see where you stand without any impact on your score.</p></details>
+      <details><summary>Is ScholarRoads free? How do you make money?</summary><p>It's completely free to use. We earn a commission from lenders when you apply through our links, at no extra cost to you — which can influence which lenders we feature, so we disclose it openly. We're not a lender and we don't collect your personal or financial information.</p></details>
+      <details><summary>Are these the only two lenders worth it?</summary><p>No — these are our two top picks for most students right now, chosen for rates, flexibility, and reputation. Other good private lenders exist, and the best choice depends on your situation. Always compare current offers before you commit.</p></details>
+    </div>
+  </section>
+
+  <!-- GUIDES -->
+  <section class="wrap">
+    <div class="shead"><h2>Learn before you <span class="mark">borrow</span></h2><p>Plain-English guides and reviews from our research team on everything related to student loans — from federal vs. private to how to apply.</p></div>
+    <div class="gcards">
+      <a class="gcard" href="college-ave-vs-sallie-mae.html"><span class="tag">Comparison</span><h4>College Ave vs. Sallie Mae</h4><p>The full head-to-head on rates, prequalification, and repayment.</p><span class="go">Read →</span></a>
+      <a class="gcard soon" href="blog.html"><span class="tag">Guide</span><h4>Federal vs. private loans</h4><p>Which to use first, and exactly why it matters.</p><span class="go">Coming soon →</span></a>
+      <a class="gcard soon" href="blog.html"><span class="tag">How-to</span><h4>How to apply, step by step</h4><p>From FAFSA to funds in your school's hands.</p><span class="go">Coming soon →</span></a>
+      <a class="gcard soon" href="blog.html"><span class="tag">Guide</span><h4>Loans for international students</h4><p>Your options, cosigner rules, and what lenders want.</p><span class="go">Coming soon →</span></a>
+    </div>
+    <div style="text-align:center;margin-top:24px"><a class="btn btn-ghost" href="blog.html">Browse all guides →</a></div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="wrap">
+    <div class="final">
+      <span class="final-eyebrow">Start with our #1 pick</span>
+      <h2>See your rate in about 3 minutes</h2>
+      <p>College Ave lets you check your real rate with a soft credit check — no hit to your score, and no obligation. It only takes a few minutes to see what you qualify for.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary cta" data-lender="collegeave" href="#" target="_blank" rel="sponsored noopener">Check my rate at College Ave →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer><div class="wrap">
+    <div class="brandline">Scholar<span>Roads</span> — a brand of HME Technology Corp</div>
+    <div class="legal">
+      <a href="about.html">About</a>
+      <a href="methodology.html">How We Rank</a>
+      <a href="advertiser-disclosure.html">Advertiser Disclosure</a>
+      <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="cookie.html">Cookie Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="disc"><strong>ScholarRoads is not a lender and does not provide financial advice.</strong> We provide general, educational information to help you compare options. We are not affiliated with any government agency or the Department of Education. Loan rates, terms, and eligibility are set by the lenders and are subject to their approval. Always review a lender's current terms before applying, and consider federal student aid options first.</p>
+  </div></footer>
+
+<script>
+  /* ===== SWAP THESE TWO PLACEHOLDER LINKS BEFORE GOING LIVE ===== */
+  var COLLEGEAVE_URL = "#REPLACE_WITH_COLLEGE_AVE_AFFILIATE_LINK";
+  var SALLIEMAE_URL  = "#REPLACE_WITH_SALLIE_MAE_AFFILIATE_LINK";
+  /* ============================================================== */
+  document.querySelectorAll("a.cta").forEach(function(a){
+    var url = a.getAttribute("data-lender") === "salliemae" ? SALLIEMAE_URL : COLLEGEAVE_URL;
+    a.setAttribute("href", url);
+  });
+</script>
+</body>
+</html>
